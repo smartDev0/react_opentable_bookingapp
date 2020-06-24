@@ -1,7 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'react-router-redux';
+import { render } from 'react-dom';
+
+// Import {history} and store
+// import store, { history } from './store';
+
+// Import root scene
+import App from './scenes/App';
+
+// Import assets
+import 'aos/dist/aos.css';
+import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
+import './global.css';
+
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
