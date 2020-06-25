@@ -20,7 +20,7 @@ export const wrapRequest = func => {
             throw res;
         } else {
             // console.log(res)
-            // return res.data;
+            return res.data;
         }
     };
 };
@@ -33,7 +33,7 @@ export const xapi = () => {
     };
     let xapi = axios.create({
         baseURL: settings.BASE_URL,
-        headers: headers
+        // headers: headers,
     });
 
     return xapi;

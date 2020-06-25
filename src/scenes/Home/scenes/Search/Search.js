@@ -5,19 +5,16 @@ import { bindActionCreators } from 'redux';
 import { toastr } from 'react-redux-toastr';
 import Swal from 'sweetalert2';
 import queryString from 'query-string';
-
 // Import actions
 import {
 getSearch
 } from '../../../../services/search/searchActions';
 
-// Import settings
-import settings from '../../../../config/settings';
 
 class Search extends React.Component {
     constructor(props) {
         super(props);
-        // console.log(props)
+
         this.state = {
             city: '',
             address: '',
@@ -26,6 +23,9 @@ class Search extends React.Component {
         this.change = this.change.bind(this);
         this.handleGetResult = this.handleGetResult.bind(this);
     } 
+    componentDidMount() {
+    }
+
     change(e) {
         this.setState({
             [e.target.name]: e.target.value
@@ -34,6 +34,7 @@ class Search extends React.Component {
 
     handleGetResult() {
         const { city, address, area } = this.state;
+        const {history} = this.props;
         if (city === null || city === '') {
             toastr.error('City name is missing', 'You must provide your city name');
             return;
@@ -44,6 +45,8 @@ class Search extends React.Component {
             area:area
         }
         this.props.searchActions.getSearch(params);
+        history.push("/result");
+        
     }
     render() {
         return (
@@ -75,17 +78,15 @@ class Search extends React.Component {
         );
     }
 }
-Search = withRouter(Search);
-// export default Search;
+
+const SearchWithRouter = withRouter(Search);
+
 export default connect(
-    state => ({
-        ...state.default.services.category
-    }),
+    ({ default: { services:  search  } }) => ({ search }),
     dispatch => ({
         searchActions: bindActionCreators(
             { getSearch },
             dispatch
         ),
-        
     })
-)(Search);
+)(SearchWithRouter);

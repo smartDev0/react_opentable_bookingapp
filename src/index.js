@@ -4,7 +4,7 @@ import { ConnectedRouter } from 'react-router-redux';
 import { render } from 'react-dom';
 
 // Import {history} and store
-import store, { history } from './store';
+import { store, history } from './store';
 
 // Import root scene
 import App from './scenes/App';

@@ -13,6 +13,7 @@ import ReduxToastr from 'react-redux-toastr';
 
 // Import scenes
 import Home from './Home/Home';
+import { history } from '../store';
 
 class App extends React.Component {
   componentDidMount() {
@@ -27,12 +28,12 @@ class App extends React.Component {
   render() {
     return (
       <main>
-        <Router>
+        <Router history={history}>
           <Switch>
             <Route path="/" render={props => <Home {...props} />} />
           </Switch>
         </Router>
-        <ReduxToastr position="bottom-left" />
+        <ReduxToastr position="top-right" />
       </main>
     );
   }

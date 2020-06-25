@@ -1,9 +1,22 @@
 import React from 'react';
-
-
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { toastr } from 'react-redux-toastr';
+import Swal from 'sweetalert2';
+import {
+    getSearch
+} from '../../../../services/search/searchActions';
 
 class SearchResult extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    componentDidMount() {
+    }
     render() {
+        const { search } = this.props;
+        console.log(search)
         return (
             <div>
                 <div id="search-result">
@@ -74,5 +87,16 @@ class SearchResult extends React.Component {
         );
     }
 }
+const SearchResultWithRouter = withRouter(SearchResult);
+// export default SearchResult;
 
-export default SearchResult;
+export default connect(
+    ({ default: { services: search } }) => ({ search }),
+    dispatch => ({
+        searchActions: bindActionCreators(
+            { getSearch },
+            dispatch
+        ),
+    })
+
+)(SearchResultWithRouter);

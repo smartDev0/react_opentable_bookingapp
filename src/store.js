@@ -18,7 +18,7 @@ searchSubscriber
 } from './services/saga';
 
 
-export const history = createBrowserHistory();
+const history = createBrowserHistory();
 
 const initialState = {};
 const enhancers = [];
@@ -53,4 +53,4 @@ const store = createStore(reducer, initialState, composedEnhancers);
  */
 sagaMiddleware.run(searchSubscriber);
 
-export default store;
+export {store, history}

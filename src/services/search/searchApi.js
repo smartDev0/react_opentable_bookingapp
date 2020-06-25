@@ -1,9 +1,8 @@
 import { wrapRequest, xapi } from '../utils';
 
-const getSearch = wrapRequest(async params =>{
-    console.log(params)
+const getSearch = wrapRequest(async params =>
     xapi().get(`/api/restaurants?city=${params.city}`)
-}
+
 );
 
 export {
