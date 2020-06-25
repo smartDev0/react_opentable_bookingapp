@@ -32,7 +32,7 @@ class App extends React.Component {
             <Route path="/" render={props => <Home {...props} />} />
           </Switch>
         </Router>
-        {/* <ReduxToastr position="bottom-left" /> */}
+        <ReduxToastr position="bottom-left" />
       </main>
     );
   }

@@ -34,7 +34,10 @@ class Search extends React.Component {
 
     handleGetResult() {
         const { city, address, area } = this.state;
-        console.log(city)
+        if (city === null || city === '') {
+            toastr.error('City name is missing', 'You must provide your city name');
+            return;
+        }
     }
     render() {
         return (
@@ -66,7 +69,7 @@ class Search extends React.Component {
         );
     }
 }
-
+Search = withRouter(Search);
 // export default Search;
 export default connect(
     state => ({
