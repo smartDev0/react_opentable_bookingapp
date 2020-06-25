@@ -1,7 +1,8 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
 import createSagaMiddleware from 'redux-saga';
-import createHistory from 'history/createBrowserHistory';
+
+import { createBrowserHistory } from 'history';
 import { reducer as formReducer } from 'redux-form';
 import { reducer as toastrReducer } from "react-redux-toastr";
 // Import reducers
@@ -17,7 +18,7 @@ searchSubscriber
 } from './services/saga';
 
 
-export const history = createHistory();
+export const history = createBrowserHistory();
 
 const initialState = {};
 const enhancers = [];
