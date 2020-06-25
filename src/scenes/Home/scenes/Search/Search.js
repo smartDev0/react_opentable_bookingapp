@@ -36,7 +36,7 @@ class Search extends React.Component {
         const { city, address, area } = this.state;
         const {history} = this.props;
         if (city === null || city === '') {
-            toastr.error('City name is missing', 'You must provide your city name');
+            toastr.error('City name is missing', 'You must provide city name');
             return;
         }
         const params= {

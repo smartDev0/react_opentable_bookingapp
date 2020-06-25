@@ -13,6 +13,7 @@ import {
 class Home extends React.Component {
     componentDidMount() {
     }
+
     render() {
         const { search: { search: {loading}}} = this.props
         if (loading) {
