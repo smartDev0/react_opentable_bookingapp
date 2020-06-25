@@ -19,8 +19,8 @@ export const wrapRequest = func => {
         ) {
             throw res;
         } else {
-            // console.log('res'res.data)
-            return res.data;
+            // console.log(res)
+            // return res.data;
         }
     };
 };

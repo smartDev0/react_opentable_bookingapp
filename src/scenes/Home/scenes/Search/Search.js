@@ -38,6 +38,12 @@ class Search extends React.Component {
             toastr.error('City name is missing', 'You must provide your city name');
             return;
         }
+        const params= {
+            city: city,
+            address: address,
+            area:area
+        }
+        this.props.searchActions.getSearch(params);
     }
     render() {
         return (
