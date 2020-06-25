@@ -1,11 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Redirect
 } from 'react-router-dom';
 import AOS from 'aos';
 import ReduxToastr from 'react-redux-toastr';

@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { toastr } from 'react-redux-toastr';
-import Swal from 'sweetalert2';
+
 import {
     getSearches, getSearch
 } from '../../../../services/search/searchActions';

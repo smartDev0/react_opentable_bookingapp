@@ -1,9 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Route, Redirect, Switch } from 'react-router-dom';
+import { Route,  Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Swal from 'sweetalert2';
-import { bindActionCreators } from 'redux';
+
 /** Import scenes */
 import Search from './scenes/Search';
 import SearchResult from './scenes/SearchResult';

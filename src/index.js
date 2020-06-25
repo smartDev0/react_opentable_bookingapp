@@ -1,10 +1,9 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'react-router-redux';
 import { render } from 'react-dom';
 
-// Import {history} and store
-import { store, history } from './store';
+// Import store
+import { store } from './store';
 
 // Import root scene
 import App from './scenes/App';
@@ -18,9 +17,7 @@ import * as serviceWorker from './serviceWorker';
 
 render(
   <Provider store={store}>
-    {/* <ConnectedRouter history={history}> */}
       <App />
-    {/* </ConnectedRouter> */}
   </Provider>,
   document.getElementById('root')
 );

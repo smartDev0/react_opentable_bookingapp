@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { toastr } from 'react-redux-toastr';
+
 
 import {
     getSearches, getSearch
@@ -10,9 +10,6 @@ import {
 
 
 class SearchDetail extends React.Component {
-    constructor(props) {
-        super(props);
-    }
     componentDidMount() {
         if (localStorage.getItem('id')) {
             const id = localStorage.getItem('id');
