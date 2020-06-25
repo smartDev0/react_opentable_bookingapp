@@ -4,7 +4,9 @@ import { put, takeEvery, call, all } from 'redux-saga/effects';
 import {
     getSearches as getSearchAction,
     getSearchesFailed,
-    getSearchesSucceed
+    getSearchesSucceed,
+    getSearchSucceed,
+    getSearchFailed
 } from './searchActions';
 
 // Import API
@@ -12,6 +14,7 @@ import * as searchApi from './searchApi';
 
 export function* searchSubscriber() {
     yield all([takeEvery('GET_SEARCHES', getSearches)]);
+    yield all([takeEvery('GET_SEARCH', getSearch)]);
 }
 
 export function* getSearches({ payload: { params } }) {
@@ -24,3 +27,14 @@ export function* getSearches({ payload: { params } }) {
     }
 }
 
+export function* getSearch({ payload: { id } }) {
+    try {
+        const search = yield call(searchApi.getSearch, id);
+        // const search = response.data;
+        console.log(search)
+        yield put(getSearchSucceed(search));
+    } catch (error) {
+        console.error(error);
+        yield put(getSearchFailed(error));
+    }
+}

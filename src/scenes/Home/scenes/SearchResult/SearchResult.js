@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { toastr } from 'react-redux-toastr';
 import Swal from 'sweetalert2';
 import {
-    getSearches
+    getSearches, getSearch
 } from '../../../../services/search/searchActions';
 import { object } from 'prop-types';
 
@@ -42,9 +42,14 @@ class SearchResult extends React.Component {
         }
         this.props.searchActions.getSearches(params);
     }
+
+    onClickGetSearch= (id) => {
+
+        this.props.searchActions.getSearch(id);
+    }
     render() {
         const { search: { search: { searches } } } = this.props;
-        console.log(searches)
+        console.log(this.props)
         return (
             <div>
                 <div id="search-result">
@@ -85,7 +90,7 @@ class SearchResult extends React.Component {
                             </div>
                             {searches.restaurants.map((item, index) =>
                                 (<div key={index}>
-                                    <div className="item">
+                                    <div className="item" onClick={() => this.onClickGetSearch(item.id)}>
                                         <img src={item.image_url} alt='...' className="item-img" />
                                         <div className="item-content">
                                             <h6 className="item-name">
@@ -137,7 +142,7 @@ export default connect(
     ({ default: { services: search } }) => ({ search }),
     dispatch => ({
         searchActions: bindActionCreators(
-            { getSearches },
+            { getSearches, getSearch },
             dispatch
         ),
     })

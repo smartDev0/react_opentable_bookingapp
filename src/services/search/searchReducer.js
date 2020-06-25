@@ -1,7 +1,8 @@
 import { handleActions } from 'redux-actions';
 
 import {
-    getSearches,getSearchesFailed,getSearchesSucceed
+    getSearches,getSearchesFailed,getSearchesSucceed,
+    getSearch,getSearchFailed,getSearchSucceed
 } from './searchActions';
 
 const defaultState = {
@@ -19,7 +20,7 @@ const reducer = handleActions({
             ...state,
             error: null,
             loading: true,
-            message: 'Generating serach lists...'
+            message: 'Generating seraches lists...'
         }
     },
     [getSearchesFailed](state, { payload: { error } }) {
@@ -35,7 +36,35 @@ const reducer = handleActions({
             loading: false,
             searches
         }
-    }
+    },
+    [getSearch](state) {
+        return {
+            ...state,
+            loading: true,
+            success: false,
+            message: 'Getting searach data info...',
+            error: null
+        }
+    },
+    [getSearchSucceed](state, { payload: { search } }) {
+        console.log('here is search data',search)
+        return {
+            ...state,
+            loading: false,
+            message: '',
+            currentSearch: search
+        }
+    },
+    [getSearchFailed](state, { payload: { error } }) {
+        return {
+            ...state,
+            loading: false,
+            success: false,
+            message: 'Getting searach data info failed',
+            error,
+            currentCategory: null
+        }
+    },
 }, defaultState);
 
 export default reducer;

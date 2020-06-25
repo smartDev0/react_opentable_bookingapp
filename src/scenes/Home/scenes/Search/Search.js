@@ -44,7 +44,7 @@ class Search extends React.Component {
             address: address,
             area:area
         }
-        this.props.searchActions.getSearch(params);
+        this.props.searchActions.getSearches(params);
         history.push("/result");
         
     }
