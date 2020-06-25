@@ -9,7 +9,6 @@ import {
     getSearches
 } from '../../../../services/search/searchActions';
 
-
 class Search extends React.Component {
     constructor(props) {
         super(props);
@@ -51,6 +50,7 @@ class Search extends React.Component {
     render() {
         return (
             <div id="search">
+                
                 <div className="section-center">
                     <div className="booking-form">
                         <form>

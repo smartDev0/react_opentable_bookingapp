@@ -8,9 +8,14 @@ import { bindActionCreators } from 'redux';
 import Search from './scenes/Search';
 import SearchResult from './scenes/SearchResult';
 import SearchDetail from './scenes/SearchDetail';
-
+///  Import logo svg
+import logo from './../..//assets/images/logo.svg'
 class Home extends React.Component {
     componentDidMount() {
+    }
+    goHome =() => {
+        const { history } = this.props;
+        history.push("/");
     }
 
     render() {
@@ -32,6 +37,7 @@ class Home extends React.Component {
 
         return (
             <div>
+                <img src={logo} className="logo-img" onClick={()=>this.goHome()}/>
                 <Switch>
                     <Route path="/result" exact render={props => <SearchResult {...props} />} />
                     <Route path="/detail" exact render={props => <SearchDetail {...props} />} />

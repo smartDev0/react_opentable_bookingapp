@@ -90,6 +90,12 @@ body {
 .d-flex {
   display: flex;
 }
+.logo-img{
+  position: absolute;
+  top: 30px;
+  left: 25px;
+  cursor: pointer;
+}
 #search-result {
   display: flex;
   flex-direction: column;
