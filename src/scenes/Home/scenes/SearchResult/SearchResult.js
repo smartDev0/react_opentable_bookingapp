@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { toastr } from 'react-redux-toastr';
 import Swal from 'sweetalert2';
 import {
-    getSearch
+    getSearches
 } from '../../../../services/search/searchActions';
 import { object } from 'prop-types';
 
@@ -40,7 +40,7 @@ class SearchResult extends React.Component {
             address: address,
             area: area
         }
-        this.props.searchActions.getSearch(params);
+        this.props.searchActions.getSearches(params);
     }
     render() {
         const { search: { search: { searches } } } = this.props;
@@ -137,7 +137,7 @@ export default connect(
     ({ default: { services: search } }) => ({ search }),
     dispatch => ({
         searchActions: bindActionCreators(
-            { getSearch },
+            { getSearches },
             dispatch
         ),
     })

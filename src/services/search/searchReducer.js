@@ -1,7 +1,7 @@
 import { handleActions } from 'redux-actions';
 
 import {
-getSearch,getSearchFailed,getSearchSucceed
+    getSearches,getSearchesFailed,getSearchesSucceed
 } from './searchActions';
 
 const defaultState = {
@@ -14,7 +14,7 @@ const defaultState = {
 };
 
 const reducer = handleActions({
-    [getSearch](state) {
+    [getSearches](state) {
         return {
             ...state,
             error: null,
@@ -22,14 +22,14 @@ const reducer = handleActions({
             message: 'Generating serach lists...'
         }
     },
-    [getSearchFailed](state, { payload: { error } }) {
+    [getSearchesFailed](state, { payload: { error } }) {
         return {
             ...state,
             error,
             loading: false
         }
     },
-    [getSearchSucceed](state, { payload: { searches } }) {
+    [getSearchesSucceed](state, { payload: { searches } }) {
         return {
             ...state,
             loading: false,

@@ -1,17 +1,17 @@
 import { createActions } from 'redux-actions';
 
 const {
-    getSearch,
-    getSearchSucceed,
-    getSearchFailed,
+    getSearches,
+    getSearchesSucceed,
+    getSearchesFailed,
 } = createActions({
-    GET_SEARCH: params => ({ params }),
-    GET_SEARCH_SUCCEED: searches => ({ searches }),
-    GET_SEARCH_FAILED: error => ({ error }),
+    GET_SEARCHES: params => ({ params }),
+    GET_SEARCHES_SUCCEED: searches => ({ searches }),
+    GET_SEARCHES_FAILED: error => ({ error }),
 });
 
 export {
-    getSearch,
-    getSearchSucceed,
-    getSearchFailed,
+    getSearches,
+    getSearchesSucceed,
+    getSearchesFailed,
 };

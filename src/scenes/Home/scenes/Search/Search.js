@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 import queryString from 'query-string';
 // Import actions
 import {
-getSearch
+    getSearches
 } from '../../../../services/search/searchActions';
 
 
@@ -85,7 +85,7 @@ export default connect(
     ({ default: { services:  search  } }) => ({ search }),
     dispatch => ({
         searchActions: bindActionCreators(
-            { getSearch },
+            { getSearches },
             dispatch
         ),
     })
