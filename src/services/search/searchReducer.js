@@ -47,7 +47,6 @@ const reducer = handleActions({
         }
     },
     [getSearchSucceed](state, { payload: { search } }) {
-        console.log('here is search data',search)
         return {
             ...state,
             loading: false,
@@ -62,7 +61,7 @@ const reducer = handleActions({
             success: false,
             message: 'Getting searach data info failed',
             error,
-            currentCategory: null
+            currentSearch: null
         }
     },
 }, defaultState);

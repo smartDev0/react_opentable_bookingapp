@@ -30,8 +30,6 @@ export function* getSearches({ payload: { params } }) {
 export function* getSearch({ payload: { id } }) {
     try {
         const search = yield call(searchApi.getSearch, id);
-        // const search = response.data;
-        console.log(search)
         yield put(getSearchSucceed(search));
     } catch (error) {
         console.error(error);

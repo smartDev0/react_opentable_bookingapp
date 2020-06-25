@@ -7,9 +7,8 @@ import { bindActionCreators } from 'redux';
 /** Import scenes */
 import Search from './scenes/Search';
 import SearchResult from './scenes/SearchResult';
-import {
-    getSearch
-} from '../../services/search/searchActions';
+import SearchDetail from './scenes/SearchDetail';
+
 class Home extends React.Component {
     componentDidMount() {
     }
@@ -35,6 +34,7 @@ class Home extends React.Component {
             <div>
                 <Switch>
                     <Route path="/result" exact render={props => <SearchResult {...props} />} />
+                    <Route path="/detail" exact render={props => <SearchDetail {...props} />} />
                     <Route path="/" render={props => <Search {...props} />} />
                 </Switch>
             </div>

@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { toastr } from 'react-redux-toastr';
 import Swal from 'sweetalert2';
-import queryString from 'query-string';
 // Import actions
 import {
     getSearches
@@ -44,6 +43,7 @@ class Search extends React.Component {
             address: address,
             area:area
         }
+        localStorage.setItem('params', JSON.stringify(params))
         this.props.searchActions.getSearches(params);
         history.push("/result");
         

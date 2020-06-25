@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 import {
     getSearches, getSearch
 } from '../../../../services/search/searchActions';
-import { object } from 'prop-types';
+
 
 class SearchResult extends React.Component {
     constructor(props) {
@@ -22,6 +22,11 @@ class SearchResult extends React.Component {
 
     }
     componentDidMount() {
+        if(localStorage.getItem('params')){
+            const params = JSON.parse(localStorage.getItem('params'));
+            this.props.searchActions.getSearches(params);
+        }
+        // console.log(JSON.parse(localStorage.getItem('params')))
     }
     change(e) {
         this.setState({
@@ -40,12 +45,15 @@ class SearchResult extends React.Component {
             address: address,
             area: area
         }
+        localStorage.setItem('params', JSON.stringify(params))
         this.props.searchActions.getSearches(params);
     }
 
     onClickGetSearch= (id) => {
-
+        const { history } = this.props;
+        localStorage.setItem('id', id)
         this.props.searchActions.getSearch(id);
+        history.push("/detail");
     }
     render() {
         const { search: { search: { searches } } } = this.props;
@@ -112,7 +120,6 @@ class SearchResult extends React.Component {
                                             {item.phone}
                                                 </a>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>)
