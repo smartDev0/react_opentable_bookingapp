@@ -5,7 +5,7 @@ import { ConnectedRouter } from 'react-router-redux';
 import { render } from 'react-dom';
 
 // Import {history} and store
-// import store, { history } from './store';
+import store, { history } from './store';
 
 // Import root scene
 import App from './scenes/App';
@@ -17,10 +17,12 @@ import './global.css';
 
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+render(
+  <Provider store={store}>
+    {/* <ConnectedRouter history={history}> */}
+      <App />
+    {/* </ConnectedRouter> */}
+  </Provider>,
   document.getElementById('root')
 );
 
