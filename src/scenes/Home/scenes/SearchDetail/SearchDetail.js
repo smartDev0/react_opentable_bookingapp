@@ -19,6 +19,10 @@ class SearchDetail extends React.Component {
             this.props.searchActions.getSearch(id);
         }
     }
+    onClickBack = () => {
+        const { history } = this.props;
+        history.push("/result");
+    }
     render() {
         const { search: { search: { currentSearch} } } = this.props;
         console.log(currentSearch)
@@ -50,7 +54,7 @@ class SearchDetail extends React.Component {
                                 </div>
                                 <br></br>
                                 <div>
-                                    <a href="tel:234234" className="item-phone">
+                                    <a href="tel:{currentSearch.phone}" className="item-phone">
                                         <i className="fa fa fa-phone"></i> &nbsp;
                                             {currentSearch.phone}
                                     </a>
@@ -60,7 +64,22 @@ class SearchDetail extends React.Component {
                         </div>
                     </div>
                     }
+                    {currentSearch == null &&
+                        <div>
+                            <div className="result-information">
+                                <h3>
+                                    Empty
+                                </h3>
+                            </div>
+                        </div>
+                    }
+                    <div className="button-group">
+                        <button className="btn btn-back" onClick={()=>this.onClickBack()}> 
+                            back
+                        </button>
+                    </div>
                 </div>
+                
             </div>
         );
     }

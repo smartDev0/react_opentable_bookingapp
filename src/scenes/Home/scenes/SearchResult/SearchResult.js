@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 import {
     getSearches, getSearch
 } from '../../../../services/search/searchActions';
-
+import { Pagination } from '@material-ui/lab';
 
 class SearchResult extends React.Component {
     constructor(props) {
@@ -15,7 +15,8 @@ class SearchResult extends React.Component {
         this.state = {
             city: '',
             address: '',
-            area: ''
+            area: '',
+            page: 1
         };
         this.change = this.change.bind(this);
         this.handleGetResult = this.handleGetResult.bind(this);
@@ -26,7 +27,6 @@ class SearchResult extends React.Component {
             const params = JSON.parse(localStorage.getItem('params'));
             this.props.searchActions.getSearches(params);
         }
-        // console.log(JSON.parse(localStorage.getItem('params')))
     }
     change(e) {
         this.setState({
@@ -47,17 +47,39 @@ class SearchResult extends React.Component {
         }
         localStorage.setItem('params', JSON.stringify(params))
         this.props.searchActions.getSearches(params);
+        this.setState({
+            city: '',
+            address: '',
+            area: ''
+        });
     }
 
-    onClickGetSearch= (id) => {
+    onClickGetSearch = (id) => {
         const { history } = this.props;
         localStorage.setItem('id', id)
         this.props.searchActions.getSearch(id);
         history.push("/detail");
     }
+
+    
     render() {
         const { search: { search: { searches } } } = this.props;
-        console.log(this.props)
+        // console.log(searches)
+        
+        const handleChange = (event, value) => {
+            this.setState({
+                page: value
+            });
+            const old_parmas = JSON.parse(localStorage.getItem('params'));
+            const params = {
+                city: old_parmas.city,
+                address: old_parmas.address,
+                area: old_parmas.area,
+                page: value
+            }
+            console.log(params)
+            this.props.searchActions.getSearches(params);
+        };
         return (
             <div>
                 <div id="search-result">
@@ -67,17 +89,17 @@ class SearchResult extends React.Component {
                                 <div className="d-flex">
                                     <div className="input-container">
                                         <i className="fa fa-building icon"></i>
-                                        <input className="input-field city-input" type="text" placeholder="Enter City" name="city" onChange={this.change} />
+                                        <input className="input-field city-input" type="text" placeholder="Enter City" name="city" onChange={this.change} value={this.state.city}/>
                                     </div>
                                 </div>
                                 <div className="d-flex">
                                     <div className="input-container">
                                         <i className="fa fa-map-marker icon" aria-hidden="true"></i>
-                                        <input className="input-field city-input" type="text" placeholder="Enter Address" name="address" onChange={this.change} />
+                                        <input className="input-field city-input" type="text" placeholder="Enter Address" name="address" onChange={this.change} value={this.state.address}/>
                                     </div>
                                     <div className="input-container">
                                         <i className="fa fa-location-arrow icon"></i>
-                                        <input className="input-field city-input" type="text" placeholder="Enter Area" name="area" onChange={this.change} />
+                                        <input className="input-field city-input" type="text" placeholder="Enter Area" name="area" onChange={this.change} value={this.state.area}/>
                                     </div>
                                 </div>
                                 <button type="button" className="btn" onClick={this.handleGetResult}>Check availability</button>
@@ -87,14 +109,16 @@ class SearchResult extends React.Component {
                 </div>
                 <div className="result">
                     {searches != null &&
+                      <>
                         <div>
                             <div className="result-information">
                                 <h3>
                                     {searches.total_entries} restaurants
                                 </h3>
-                                {/* <div>
-                                    Page 1 of 6
-                                </div> */}
+                                <div>
+           
+                                Page {this.state.page} / {Math.ceil(Number(searches.total_entries) / Number(searches.per_page) ,1)}
+                                </div>
                             </div>
                             {searches.restaurants.map((item, index) =>
                                 (<div key={index}>
@@ -102,7 +126,8 @@ class SearchResult extends React.Component {
                                         <img src={item.image_url} alt='...' className="item-img" />
                                         <div className="item-content">
                                             <h6 className="item-name">
-                                                {index + 1} {item.name}
+                                               
+                                                { 25*(this.state.page - 1) + index + 1} . {item.name}
                                             </h6>
                                             <div className="item-address">
                                                 address:  {item.address}
@@ -117,7 +142,7 @@ class SearchResult extends React.Component {
                                             <div>
                                                 <a href="tel:234234" className="item-phone">
                                                     <i className="fa fa fa-phone"></i> &nbsp;
-                                            {item.phone}
+                                                 {item.phone}
                                                 </a>
                                             </div>
                                         </div>
@@ -126,6 +151,8 @@ class SearchResult extends React.Component {
                             )}
 
                         </div>
+                        <Pagination count={Math.ceil(Number(searches.total_entries) / Number(searches.per_page), 1)} page={this.state.page} showFirstButton showLastButton onChange={handleChange}/>
+                    </>
                     }
                     {searches == null &&
                         <div>
@@ -136,6 +163,8 @@ class SearchResult extends React.Component {
                             </div>
                         </div>
                     }
+                    
+                    
                 </div>
             </div>
 

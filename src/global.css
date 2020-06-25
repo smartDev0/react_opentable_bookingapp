@@ -124,39 +124,50 @@ body {
 .result-information div {
   text-align: center;
 }
-.item{
-    padding: 5px 0;
-    display: flex;
+.item {
+  padding: 5px 0;
+  display: flex;
+  cursor: pointer;
 }
-.item-content{
-    margin-left: 15px;
+.item-content {
+  margin-left: 15px;
 }
-.item-name{
-        color: #247f9e;
-    margin: 0;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 24px;
+.item-name {
+  color: #247f9e;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
 }
-.item-address{
-        color: #2d333f;
-    font-size: 14px;
-    line-height: 20px;
-    font-weight: 400;
+.item-address {
+  color: #2d333f;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
 }
-.item-phone{
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 24px;
-    text-decoration: none;
-    color: #da3743;
-    border-radius: 4px;
-    border: .0625rem solid #d8d9db;
-    vertical-align: middle;
-    padding: 4px 8px;
+.item-phone {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  text-decoration: none;
+  color: #da3743;
+  border-radius: 4px;
+  border: 0.0625rem solid #d8d9db;
+  vertical-align: middle;
+  padding: 4px 8px;
 }
-
+.item-img {
+  width: 150px;
+  height: 150px;
+}
+.btn-back {
+  width: 300px;
+  font-size: 15px;
+}
+.button-group {
+  text-align: center;
+}
 @media (min-width: 1056px) {
   .result {
     width: 64rem;
@@ -166,5 +177,9 @@ body {
 @media only screen and (max-width: 768px) {
   .booking-form {
     width: calc(100% - 50px);
+  }
+  .item-img {
+    width: 100px;
+    height: 100px;
   }
 }
