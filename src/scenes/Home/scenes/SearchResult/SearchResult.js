@@ -40,6 +40,34 @@ class SearchResult extends React.Component {
                             Page 1 of 6
                         </div>
                     </div>
+                    <div>
+                        <div className="item">
+                            <img src="https://www.opentable.com/img/restimages/82957.jpg" alt='...' className="item-img" />
+                            <div className="item-content">
+                                <h6 className="item-name">
+                                    Moriki
+                            </h6>
+                                <div className="item-address">
+                                    address:  Booked 19 times today
+                            </div>
+                                <div className="item-area">
+                                    city: Toronto / SW Ontario
+                            </div>
+                                <div className="item-postalcode">
+                                    postal-code: M4V 2L1
+                            </div>
+                                <br></br>
+                                <div>
+                                    <a href="tel:234234" className="item-phone">
+                                        <i className="fa fa fa-phone"></i> &nbsp;
+                                234234
+                            </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
 

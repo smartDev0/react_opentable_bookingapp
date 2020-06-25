@@ -8,7 +8,12 @@ body {
   background-color: #f7f7f7;
 }
 #search {
-  background-image: linear-gradient(to right, rgba(47, 45, 65, 0.7), rgba(47, 45, 65, 0.7)), url("assets/images/background.jpg");
+  background-image: linear-gradient(
+      to right,
+      rgba(47, 45, 65, 0.7),
+      rgba(47, 45, 65, 0.7)
+    ),
+    url("assets/images/background.jpg");
   /* background-image: url("assets/images/background.jpg"); */
   font-family: "Montserrat", sans-serif;
   background-size: cover;
@@ -85,44 +90,81 @@ body {
 .d-flex {
   display: flex;
 }
-#search-result{
+#search-result {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-size: cover;
+  background-position: 50%;
+  padding-bottom: 1.5rem;
+  min-height: 26rem;
+  background-image: linear-gradient(
+      to right,
+      rgba(47, 45, 65, 0.7),
+      rgba(47, 45, 65, 0.7)
+    ),
+    url("assets/images/result-background.jpg");
+}
+#search-result .section-center {
+  top: 25%;
+}
+.result {
+  background: white;
+
+  padding: 20px 25px;
+  margin: auto;
+}
+.result-information h3 {
+  text-align: center;
+}
+.result-information {
+  border-bottom: 1px solid grey;
+}
+.result-information div {
+  text-align: center;
+}
+.item{
+    padding: 5px 0;
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    background-size: cover;
-    background-position: 50%;
-    padding-bottom: 1.5rem;
-    min-height: 26rem;
-    background-image: linear-gradient(to right, rgba(47, 45, 65, 0.7), rgba(47, 45, 65, 0.7)), url("assets/images/result-background.jpg");
 }
-#search-result .section-center{
-top: 25%;
+.item-content{
+    margin-left: 15px;
 }
-.result{
-    background: white;
-   
-    padding: 20px 25px;
-margin: auto;
+.item-name{
+        color: #247f9e;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
 }
-.result-information h3{
-    text-align: center;
+.item-address{
+        color: #2d333f;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
 }
-.result-information{
-    border-bottom: 1px solid grey;
+.item-phone{
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    text-decoration: none;
+    color: #da3743;
+    border-radius: 4px;
+    border: .0625rem solid #d8d9db;
+    vertical-align: middle;
+    padding: 4px 8px;
 }
-.result-information div{
-     text-align: center;
-}
+
 @media (min-width: 1056px) {
-.result{
+  .result {
     width: 64rem;
-    
-}
+  }
 }
 
 @media only screen and (max-width: 768px) {
-.booking-form {
-  width: calc(100% - 50px);
-}
+  .booking-form {
+    width: calc(100% - 50px);
+  }
 }
