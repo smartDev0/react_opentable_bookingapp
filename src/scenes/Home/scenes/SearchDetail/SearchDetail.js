@@ -25,7 +25,6 @@ class SearchDetail extends React.Component {
     }
     render() {
         const { search: { search: { currentSearch} } } = this.props;
-        console.log(currentSearch)
         return (
             <div>
                 <div id="search-result">

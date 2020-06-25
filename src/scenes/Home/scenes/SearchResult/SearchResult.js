@@ -151,7 +151,10 @@ class SearchResult extends React.Component {
                             )}
 
                         </div>
-                        <Pagination count={Math.ceil(Number(searches.total_entries) / Number(searches.per_page), 1)} page={this.state.page} showFirstButton showLastButton onChange={handleChange}/>
+                        <div>
+                            <Pagination count={Math.ceil(Number(searches.total_entries) / Number(searches.per_page), 1)} page={this.state.page} showFirstButton showLastButton onChange={handleChange} />
+                        </div>
+                       
                     </>
                     }
                     {searches == null &&

@@ -105,13 +105,14 @@ body {
       rgba(47, 45, 65, 0.7)
     ),
     url("assets/images/result-background.jpg");
+  font-family: "Montserrat", sans-serif;
 }
 #search-result .section-center {
   top: 25%;
 }
 .result {
   background: white;
-
+  font-family: "Montserrat", sans-serif;
   padding: 20px 25px;
   margin: auto;
 }
